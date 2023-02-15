@@ -33,7 +33,7 @@ int main() {
     std::cout << "Before : " << s1.data << std::endl;
 
     // s1 이 그대로 전달된 것이 아니라 s1 의 복사본이 전달됨!
-    auto do_something_with_s1 = std::bind(do_something, s1, std::placeholders::_1);
+    auto do_something_with_s1 = std::bind(do_something, std::ref(s1), std::placeholders::_1);
     do_something_with_s1(s2);
 
     std::cout << "After :: " << s1.data << std::endl;
